@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ontario STEM Learning Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Login/Register Screen -->
+    <div id="auth-screen" class="screen active">
+        <div class="auth-container">
+            <h1>🎓 Ontario STEM Learning</h1>
+            <p class="subtitle">Your Complete High School Study Companion</p>
+            
+            <div class="auth-tabs">
+                <button class="auth-tab active" onclick="showAuthTab('login')">Login</button>
+                <button class="auth-tab" onclick="showAuthTab('register')">Register</button>
+            </div>
+            
+            <div id="login-form" class="auth-form active">
+                <h2>Welcome Back!</h2>
+                <input type="email" id="login-email" placeholder="Email Address" required>
+                <input type="password" id="login-password" placeholder="Password" required>
+                <button type="button" onclick="login()">Login</button>
+                <p class="error-message" id="login-error"></p>
+                <p class="success-message" id="login-success"></p>
+            </div>
+            
+            <div id="register-form" class="auth-form">
+                <h2>Create Account</h2>
+                <input type="text" id="register-name" placeholder="Your Full Name" required>
+                <input type="email" id="register-email" placeholder="Your Email Address" required>
+                <input type="password" id="register-password" placeholder="Choose Password (min 4 characters)" required>
+                <input type="password" id="register-confirm" placeholder="Confirm Password" required>
+                <select id="register-grade">
+                    <option value="">Select Your Grade</option>
+                    <option value="10">Grade 10</option>
+                    <option value="11">Grade 11</option>
+                    <option value="12">Grade 12</option>
+                </select>
+                <button type="button" onclick="register()">Create Account</button>
+                <p class="error-message" id="register-error"></p>
+                <p class="success-message" id="register-success"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App Screen -->
+    <div id="main-screen" class="screen">
+        <header>
+            <div class="header-content">
+                <h1>🎓 Ontario STEM Learning</h1>
+                <div class="user-info">
+                    <span id="user-name"></span>
+                    <button class="logout-btn" onclick="logout()">Logout</button>
+                </div>
+            </div>
+        </header>
+
+        <nav class="breadcrumb" id="breadcrumb"></nav>
+
+        <main id="content">
+            <!-- Grade Selection -->
+            <div id="grade-selection" class="selection-screen active">
+                <h2>Select Your Grade</h2>
+                <div class="card-grid">
+                    <div class="card grade-card" onclick="selectGrade(10)">
+                        <div class="card-icon">📚</div>
+                        <h3>Grade 10</h3>
+                        <p>Foundation Level</p>
+                    </div>
+                    <div class="card grade-card" onclick="selectGrade(11)">
+                        <div class="card-icon">🔬</div>
+                        <h3>Grade 11</h3>
+                        <p>Intermediate Level</p>
+                    </div>
+                    <div class="card grade-card" onclick="selectGrade(12)">
+                        <div class="card-icon">🎯</div>
+                        <h3>Grade 12</h3>
+                        <p>Advanced Level</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subject Selection -->
+            <div id="subject-selection" class="selection-screen">
+                <h2>Select Your Subject</h2>
+                <div class="card-grid" id="subject-cards"></div>
+            </div>
+
+            <!-- Chapter Selection -->
+            <div id="chapter-selection" class="selection-screen">
+                <h2>Select a Chapter</h2>
+                <div class="chapter-list" id="chapter-list"></div>
+            </div>
+
+            <!-- Chapter Content -->
+            <div id="chapter-content" class="content-screen">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <div id="lesson-content"></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Load scripts in EXACT order -->
+    <script src="data/user-manager.js"></script>
+    <script src="data/database.js"></script>
+    <script src="data/grades/grade11/physics/work-energy.js"></script>
+    <script src="data/grades/grade11/physics/forces.js"></script>
+    <script src="data/grades/grade11/chemistry/moles.js"></script>
+    <script src="data/grades/grade11/chemistry/chemical-reactions.js"></script>
+    <script src="data/grades/grade11/biology/cells.js"></script>
+    <script src="data/grades/grade11/math/functions.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
